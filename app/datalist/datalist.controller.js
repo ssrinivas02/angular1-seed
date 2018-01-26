@@ -12,21 +12,31 @@ angular.module('myApp.datalist', ['ngRoute'])
 .controller('datalistCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.headerColumns = [];
     $scope.datalist = [];
-    $scope.sortDirection;
-    $scope.sortByColumn;
+    $scope.sortByColumn = 'name';
+    $scope.sortDirection = true;
+    $scope.goToPage = {name: 'Category List Page', link:"#!/categorylist"};
+
+    //Fetching data
     $http.get('assets/data.json').success(function(data){
-        console.log(data);
+        populateGridData(data);
+    });
+    
+
+    var populateGridData = function(data) {
         $scope.datalist = data;
-        createHeaderColumns(); 
-    });    
-    var createHeaderColumns = function() {
+
+        //Preparing Header name
         var dataObj = $scope.datalist[0];
-        console.log(dataObj);
         for (var key in dataObj) {
-            console.log(key);
             $scope.headerColumns.push({ name: key })
-            console.log($scope.headerColumns);
         }
-    }    
+    }
+
+    $scope.onSortHandler = function(header) {
+        $scope.sortByColumn = header.name;
+        var columnDirection = !$scope.sortDirection;
+        $scope.sortDirection = !$scope.sortDirection;
+        header.sortDirection = columnDirection;
+    }
 
 }]);
