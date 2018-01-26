@@ -1,25 +1,33 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+table{
+  border: 1px solid #908b8b;
+  background-color: #f7f7f7;
+}
+th{
+  position: relative;
+  cursor: pointer;
+} 
+.glyphicon{
+  width: 50%;
+  position: absolute;
+  bottom: 9px;
+  top: inherit;
+}
+span{
+  width: 50%;    
 }
 
-.menu:before {
-  content: "[";
+td, th{
+  text-align: center;
+  text-transform: capitalize;
+}
+.sortheader{
+  width:35%;
+  text-align:left;
+  padding-left:15px;
+}
+tbody tr:nth-child(odd){
+  background-color: #fff;
 }
 
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
-}

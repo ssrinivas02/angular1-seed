@@ -1,0 +1,22 @@
+<div class="col-xs-12">
+    <a [routerLink]="['/formatList']" class="navigate-link">Go to Next Page</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th ng-repeat="header in headerColumns" ng-click="onSortHandler(header.name)">
+                    <span >{{header.name}}</span>
+                    <span class="glyphicon sortheader" ng-class="{'glyphicon-sort-by-attributes': sortByColumn === column.name
+                   && sortDirection === 1, 'glyphicon-sort-by-attributes-alt': sortByColumn === column.name
+                   && sortDirection === -1  }"></span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in datalist">
+                <td ng-repeat="column in headerColumns">
+                    {{row[column.name] || '-'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
