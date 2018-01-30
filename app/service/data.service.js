@@ -11,12 +11,8 @@ function DataService($http) {
     };
 
     function getData() {
-        //return $http.get('assets/data.json');
-        $http.get('assets/data.json').success(function(data){
-            console.log("loading...");
-            console.log(data);
-            return data;
-        });
+        return $http.get('assets/data.json');
+        
     }
     return service;
 };
